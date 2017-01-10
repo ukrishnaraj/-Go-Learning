@@ -26,18 +26,15 @@ func tsp(a [][]int,start int) []int  {
     for i := range visited{
         visited[i]=0
     }
-    for i:=0; i< len(a)-1; i++{
+    for i:=0; i< len(a); i++{
         travel[i] = start
         if i==len(a)-1 {
             travel[i+1]= travel[0]
         }
         visited[start] = 1 
+        fmt.Println("@@",visited)
         new := nextNode(a[start],visited,start)
-        if new !=0{
-            start = new
-        } else {
-            start = travel[0]
-        }
+        start = new 
     }
     return travel
 }
@@ -50,8 +47,9 @@ func nextNode(a,visited []int,x int) int  {
         if a[i] != 0 && visited[i]==0 && a[i]<min{
                 min = a[i]
                 next = i
+                fmt.Println(".$$52##",i)
         }
     }
-    fmt.Println(".$$52##",min)
+    
     return next
 }
